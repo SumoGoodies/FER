@@ -9,3 +9,10 @@ _sourceCategory=*IDS* ",TRAFFIC,"
 for system  (had to use a regex because description contains ',')
 _sourceCategory=*IDS* ",SYSTEM," 
 | extract "^(?<f1>[^,]*?),(?<recvTime>[^,]*?),(?<serialNum>[^,]*?),(?<type>[^,]*?),(?<subtype>[^,]*?),(?<f2>[^,]*?),(?<f3>[^,]*?),(?<vsys>[^,]*?),(?<event>[^,]*?),(?<object>[^,]*?),(?<f4>[^,]*?),(?<f5>[^,]*?),(?<module>[^,]*?),(?<severity>[^,]*?),(?<description>.*?),(?<seqNum>\d+?),(?<action_flags>.*)"
+
+
+SUB-EXTRACTIONS
+| regex field=threat_id "\((?<threat_id>\d+)\)"
+| regex field=misc "^(?<dst_hostname>[^/]*)/"
+| regex field=content_type "^(?<major_content_type>[^/]*)/"
+| regex field=misc "(?<filename>[^/?]*)(?:\?.*){0,1}$"
