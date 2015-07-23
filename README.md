@@ -46,8 +46,58 @@ resp_cc -
 
 sensorname -
 
-ts,uid,src_ip,src_port,dst_ip,dst_port,trans_depth,method,host,uri,referrer,user_agent,request_body_len,response_body_len,status_code,status_msg,info_code,info_msg,filename,tags,username,password,proxied,orig_fuids,orig_mime_types,resp_fuids,resp_mime_types
+trans_depth -
 
-ip_proto,facility,severity,message
+method - GET/PUT/POST
 
-username,mac,remote_ip,connect_info,result
+host - Host name
+
+uri - URI
+
+referrer - 
+
+user_agent -
+
+request_body_len - 
+
+response_body_len - 
+
+status_code - 
+
+status_msg - 
+
+info_code - 
+
+info_msg -
+
+filename - 
+
+tags -
+
+username - 
+
+password -
+
+proxied - 
+
+orig_fuids -
+
+orig_mime_types - 
+
+resp_fuids -
+
+resp_mime_types -
+
+facility - syslog facility 
+
+severity - 
+
+message -
+
+mac - 
+
+remote_ip - 
+
+connect_info -
+
+result
