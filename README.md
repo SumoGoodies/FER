@@ -1,10 +1,9 @@
 Common field names: credit goes to bro.org
 
-ts
-
-uid
-src_ip
-src_port
+ts - timestamp
+uid - unique id
+src_ip - source IP
+src_port - source Port
 dst_ip
 dst_port
 ip_proto
