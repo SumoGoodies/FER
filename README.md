@@ -4,13 +4,21 @@ ts - timestamp
 
 uid - unique id
 
+src_host - source hostname
+
 src_ip - source IP
 
 src_port - source Port
 
-dst_ip - destination IP
+src_user - source user, could be acting user
 
-dst_port - destination Port
+dest_ip - destination IP (bro says dst_ip)
+
+dest_host - destination or target host name
+
+dest_port - destination Port (bro says dst_port)
+
+dest_user - acted upon user
 
 ip_proto - IP Communication protocol: ie: tcp, udp, icmp, etc
 
