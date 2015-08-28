@@ -1,7 +1,7 @@
 Micosoft-Failed Logins
 
 (_sourceCategory=OS/Windows) ("EventCode = 4625") 
-| extract "Account For Which Logon Failed:\r\s+Security ID:\s+[^\r]+\r\s+Account Name:\s+(?<user>[^\r]+?)\r" 
+| extract "Account For Which Logon Failed:\r\s+Security ID:\s+[^\r]+\r\s+Account Name:\s+(?<src_user>[^\r]+?)\r" 
 | extract "Network Information:\r\s+Workstation Name:\s+(?<src_host>[^\r]+?)\r\s+Source Network Address:\s+(?<src_ip>[^\r]+?)\r" 
 | extract "Failure Information:\r\s+Failure Reason:\s+(?<fail_reason>[^\r]+?)\r" 
 | "Login/Failure" as Classification
@@ -15,7 +15,7 @@ Microsoft-Successful Logins
 (_sourceCategory=OS/Windows) ("EventCode = 4624") 
 | parse "Workstation Name:\t*\r" as src_host 
 | parse "Source Network Address:\t*\r" as src_ip 
-| extract "New Logon:\r\s+Security ID:\s+[^\r]+\r\s+Account Name:\s+(?<user>[^\r]+?)\r" 
+| extract "New Logon:\r\s+Security ID:\s+[^\r]+\r\s+Account Name:\s+(?<src_user>[^\r]+?)\r" 
 | extract "Message = \"(?<message>[^\.]+?)\." 
 | "Login/Success" as Classification
 | "Low" as Severity
@@ -34,6 +34,17 @@ Microsoft-Account Lockout
 | "Microsoft" as Vendor
 | "OS" as Device_Type
 
+-----------------
+Microsoft-Account Disabled
+
+(_sourceCategory=OS/Windows) ("EventCode = 4725") 
+| extract "Subject:\r\s+Security ID:\s+[^\r]+\r\s+Account Name:\s+(?<src_user>[^\r]+?)\r" 
+| extract "Target Account:\r\s+Security ID:\s+[^\r]+\r\s+Account Name:\s+(?<dest_user>[^\r]+?)\r"
+| extract "Message = \"(?<message>[^\.]+?)\." 
+| "Privileged/Activity/Account/Disable/Success" as Classification
+| "High" as Severity
+| "Microsoft" as Vendor
+| "OS" as Device_Type
 
 -----------
 Microsoft-User Account Enabled
@@ -48,6 +59,16 @@ Microsoft-User Account Enabled
 | "OS" as Device_Type
 
 
+-------------
+Microsoft-User Account Created
 
+(_sourceCategory=OS/Windows) ("EventCode = 4720") 
+| extract "Subject:\r\s+Security ID:\s+[^\r]+\r\s+Account Name:\s+(?<src_user>[^\r]+?)\r" 
+| extract "New Account:\r\s+Security ID:\s+[^\r]+\r\s+Account Name:\s+(?<dest_user>[^\r]+?)\r" 
+| extract "Message = \"(?<message>[^\.]+?)\." 
+| "Privileged/Activity/Account/Create/Success" as Classification
+| "High" as Severity
+| "Microsoft" as Vendor
+| "OS" as Device_Type
 
 ------------
