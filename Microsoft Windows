@@ -9,6 +9,18 @@ Micosoft-Failed Logins
 | "Microsoft" as Vendor
 | "OS" as Device_Type
 
+-----------
+Microsoft-Successful Logins
+
+(_sourceCategory=OS/Windows) ("EventCode = 4624") 
+| parse "Workstation Name:\t*\r" as src_host 
+| parse "Source Network Address:\t*\r" as src_ip 
+| extract "New Logon:\r\s+Security ID:\s+[^\r]+\r\s+Account Name:\s+(?<user>[^\r]+?)\r" 
+| extract "Message = \"(?<message>[^\.]+?)\." 
+| "Login/Success" as Classification
+| "Low" as Severity
+| "Microsoft" as Vendor
+| "OS" as Device_Type
 
 -----------
 Microsoft-Account Lockout
