@@ -72,3 +72,29 @@ Microsoft-User Account Created
 | "OS" as Device_Type
 
 ------------
+Microsoft-User Account Deleted
+
+(_sourceCategory=OS/Windows) ("EventCode = 4726") 
+| extract "Subject:\r\s+Security ID:\s+[^\r]+\r\s+Account Name:\s+(?<src_user>[^\r]+?)\r" 
+| extract "Target Account:\r\s+Security ID:\s+[^\r]+\r\s+Account Name:\s+(?<dest_user>[^\r]+?)\r" 
+| extract "Message = \"(?<message>[^\.]+?)\." 
+| "Privileged/Activity/Account/Delete/Success" as Classification
+| "High" as Severity
+| "Microsoft" as Vendor
+| "OS" as Device_Type
+
+
+-----------
+Microsoft-User Password Reset
+
+(_sourceCategory=OS/Windows) ("EventCode = 4724") 
+| extract "Subject:\r\s+Security ID:\s+[^\r]+\r\s+Account Name:\s+(?<src_user>[^\r]+?)\r" 
+| extract "Target Account:\r\s+Security ID:\s+[^\r]+\r\s+Account Name:\s+(?<dest_user>[^\r]+?)\r" 
+| extract "Message = \"(?<message>[^\.]+?)\." 
+| "Change/Account/Password/Reset" as Classification
+| "High" as Severity
+| "Microsoft" as Vendor
+| "OS" as Device_Type
+
+
+
