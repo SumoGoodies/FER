@@ -1,0 +1,10 @@
+This is an sample FER for Google Audit.. 8/31/2015
+
+
+_sourceCategory=*google* 
+| parse "\"type\": \"*\"" as event_type 
+| parse "kind\": \"*\"" as kind 
+| parse "name\": \"*\"," as event 
+| parse "ipAddress\": \"*\"" as src_ip  
+| parse "email\": \"*\"" as src_user_email  
+| parse "applicationName\": \"*\"" as app 
