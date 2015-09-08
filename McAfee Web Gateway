@@ -1,0 +1,3 @@
+_sourceCategory=*MWG*  mwg
+| extract "mwg: \[[^\]]+] \"(?<auth_user>[^\"]*?)\" (?<src_ip>[\S]+?) (?<status_code>[\S]+?) \"(?<method>[\S]+?) (?<url>[\S]+)\s?"  
+| extract "mwg: [^\"]*\"[^\"]*\"[^\"]*\"[\S]* [\S]* (?<protocol>[^\"]+?)\" \"(?<category>[^\"]*?)\" \"(?<rep_level>[^\"]*?)\" \"(?<media_type>[^\"]*?)\" (?<orig_bytes>\d+?) (?<resp_bytes>\d+?) \"(?<user_agent>[^\"]*?)\" \"(?<f1>[^\"]*?)\" \"(?<event_id>[^\"]*?)\" (?<dest_ip>[\S]*)" nodrop
