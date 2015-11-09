@@ -8,3 +8,12 @@ _sourceCategory=*google*
 | parse "ipAddress\": \"*\"" as src_ip  
 | parse "email\": \"*\"" as src_user_email  
 | parse "applicationName\": \"*\"" as app 
+
+or be specific with
+
+_sourceCategory=Google_Apps_Login | parse "type\": \"*\"" as action, "name\": \"*\"," as result, "ipAddress\": \"*\"" as src_ip, "email\": \"*\"" as user, "applicationName\": \"*\"" as app
+| extract "name\": \"login_type\",\s+\"value\": \"(?<login_type>[^\"]+?)\""
+| extract "name\": \"is_suspicious\",\s+\"boolValue\": (?<is_suspcious>true|false)" nodrop
+
+
+
