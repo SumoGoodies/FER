@@ -80,7 +80,7 @@ info_msg -
 
 filename - 
 
-tags -
+tags - domain_controller, server, workstation, switch, firewall
 
 username - 
 
