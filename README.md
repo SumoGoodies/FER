@@ -22,7 +22,7 @@ dest_user - acted upon user
 
 ip_proto - IP Communication protocol: ie: tcp, udp, icmp, etc
 
-service - Name of the service, ie: DHCP, DNS, etc
+service - Name of the service, ie: DHCP, DNS, etc (device_role - domain_controller, server, workstation, switch, firewall)
 
 duration - time
 
@@ -80,7 +80,7 @@ info_msg -
 
 filename - 
 
-tags - domain_controller, server, workstation, switch, firewall
+tags - 
 
 username - 
 
