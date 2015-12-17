@@ -1,0 +1,3 @@
+Azure Active Directory
+
+_sourceCategory=*Azure | parse "Workload\":\"*\"" as workload, "Client\":\"*\"" as app, "ClientIP\":\"*\"" as src_ip, "UserId\":\"*\"" as user, "ResultStatus\":\"*\"" as result 
