@@ -1,7 +1,7 @@
 
 
 _sourceCategory=Network_Firewall ASA built (inbound or outbound)
-| extract "(?:for|from) .*?(?<src_host>\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3})/(?<src_port>\d+)\D"  
+| extract "(?:for|from) .*?(?<src_ip>\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3})/(?<src_port>\d+)\D"  
 | extract "(?:inbound|outbound) (?<protocol>\S+) connection" 
 | extract "to .*?(?<dest_host>\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3})/(?<dest_port>\d+)\D" 
 | where src_host!="" and dest_host!=""
